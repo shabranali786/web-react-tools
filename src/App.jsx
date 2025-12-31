@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Master } from "./component/Allcomponent";
 import { Home, ImageCompressor } from "./pages/Allpages";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   const router = createBrowserRouter(
@@ -20,7 +21,11 @@ function App() {
       </>
     )
   );
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

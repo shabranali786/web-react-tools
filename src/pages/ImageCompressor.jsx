@@ -53,7 +53,6 @@ const ImageCompressor = () => {
 
   const handleCompress = async () => {
     if (!file) return;
-    
     setIsCompressing(true);
     const options = {
       maxSizeMB: 1,
@@ -73,7 +72,7 @@ const ImageCompressor = () => {
       });
     } catch (error) {
       console.error("Compression error:", error);
-      alert("Something went wrong during compression. Please try again.");
+      alert("Something went wrong during compression.");
     } finally {
       setIsCompressing(false);
     }
@@ -95,47 +94,46 @@ const ImageCompressor = () => {
     setResult(null);
   };
 
-  const features = [
-    { icon: <Zap className="w-5 h-5 text-yellow-500" />, title: "Lightning Fast", desc: "Compress images in seconds right in your browser." },
-    { icon: <ShieldCheck className="w-5 h-5 text-green-500" />, title: "Secure & Private", desc: "Your photos never leave your device. We don't store anything." },
-    { icon: <Info className="w-5 h-5 text-blue-500" />, title: "Smart Compression", desc: "Perfect balance between file size and image quality." }
-  ];
-
   return (
-    <div className="min-h-screen bg-[#f8fafc] py-16 px-4">
-      {/* Background Decor */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-100/50 rounded-full blur-3xl" />
-        <div className="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-indigo-100/50 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen py-10 px-4 font-sans text-slate-700 dark:text-slate-200">
+      
+      <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-6 text-blue-600 font-medium text-sm">
-            <Sparkles className="w-4 h-4" />
-            <span>Premium Web Tool</span>
+          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full mb-6 
+            bg-[#EFEEEE] dark:bg-[#292D32]
+            shadow-[inset_3px_3px_6px_#d1d9e6,inset_-3px_-3px_6px_#ffffff]
+            dark:shadow-[inset_3px_3px_6px_#1e2226,inset_-3px_-3px_6px_#34383e]
+          ">
+            <Sparkles className="w-4 h-4 text-blue-500" />
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Premium Tool</span>
           </div>
-          <h1 className="text-5xl font-black text-slate-900 mb-6 tracking-tight">
-            Image <span className="text-blue-600">Compressor</span>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-slate-800 dark:text-slate-100">
+            Image <span className="text-blue-500">Compressor</span>
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Optimize your images for the web without compromising on clarity. Fast, free, and completely secure.
+          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+            Soft UI meets powerful compression. Optimize your images without leaving your browser.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Tool Area */}
+          
+          {/* Main Area */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-8"
           >
-            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white">
+            {/* Main Container - Neumorphic OUT */}
+            <div className="rounded-[40px] p-8 md:p-10 transition-colors duration-300
+              bg-[#EFEEEE] dark:bg-[#292D32]
+              shadow-[12px_12px_24px_#d1d9e6,-12px_-12px_24px_#ffffff]
+              dark:shadow-[12px_12px_24px_#1e2226,-12px_-12px_24px_#34383e]
+            ">
               <AnimatePresence mode="wait">
                 {!file ? (
                   <motion.div
@@ -147,11 +145,12 @@ const ImageCompressor = () => {
                     onDragLeave={handleDrag}
                     onDragOver={handleDrag}
                     onDrop={handleDrop}
-                    className={`relative group border-2 border-dashed rounded-2xl p-16 transition-all duration-300 flex flex-col items-center justify-center ${
-                      dragActive 
-                        ? "border-blue-500 bg-blue-50/50 scale-[1.01]" 
-                        : "border-slate-200 hover:border-blue-400 hover:bg-slate-50/50"
-                    }`}
+                    className={`relative rounded-[30px] p-16 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer
+                      ${dragActive 
+                        ? "shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff] dark:shadow-[inset_8px_8px_16px_#1e2226,inset_-8px_-8px_16px_#34383e] scale-[0.99]" 
+                        : "shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] dark:shadow-[inset_6px_6px_12px_#1e2226,inset_-6px_-6px_12px_#34383e] hover:shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff] dark:hover:shadow-[inset_8px_8px_16px_#1e2226,inset_-8px_-8px_16px_#34383e]"
+                      }
+                    `}
                   >
                     <input
                       type="file"
@@ -159,77 +158,102 @@ const ImageCompressor = () => {
                       onChange={(e) => handleFile(e.target.files[0])}
                       accept="image/*"
                     />
-                    <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Upload className="w-10 h-10 text-blue-600" />
+                    <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 text-blue-500
+                      bg-[#EFEEEE] dark:bg-[#292D32]
+                      shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+                      dark:shadow-[6px_6px_12px_#1e2226,-6px_-6px_12px_#34383e]
+                    ">
+                      <Upload className="w-8 h-8" />
                     </div>
-                    <p className="text-xl font-semibold text-slate-800 mb-2">
-                      Drop your image here
+                    <p className="text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">
+                      Drop image here
                     </p>
-                    <p className="text-slate-500 mb-6">or click to browse files</p>
-                    <div className="flex gap-4">
-                      <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">PNG</span>
-                      <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">JPG</span>
-                      <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-600">WEBP</span>
-                    </div>
+                    <p className="text-slate-500 dark:text-slate-400">or click to browse</p>
                   </motion.div>
                 ) : (
                   <motion.div
                     key="preview-zone"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     className="space-y-8"
                   >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                            <ImageIcon className="w-5 h-5 text-blue-600" />
-                            <span className="font-semibold text-slate-800 truncate max-w-[200px]">{file.name}</span>
+                            <div className="p-2 rounded-lg bg-[#EFEEEE] dark:bg-[#292D32] shadow-[3px_3px_6px_#d1d9e6,-3px_-3px_6px_#ffffff] dark:shadow-[3px_3px_6px_#1e2226,-3px_-3px_6px_#34383e]">
+                              <ImageIcon className="w-5 h-5 text-blue-500" />
+                            </div>
+                            <span className="font-bold text-slate-700 dark:text-slate-200 truncate max-w-[200px]">{file.name}</span>
                         </div>
                         <button 
                             onClick={reset}
-                            className="p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-full transition-colors"
+                            className="p-3 rounded-full text-slate-400 hover:text-red-500 transition-colors
+                            bg-[#EFEEEE] dark:bg-[#292D32]
+                            shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]
+                            dark:shadow-[5px_5px_10px_#1e2226,-5px_-5px_10px_#34383e]
+                            active:shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]
+                            dark:active:shadow-[inset_5px_5px_10px_#1e2226,inset_-5px_-5px_10px_#34383e]
+                            "
                         >
                             <X className="w-5 h-5" />
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-3">
-                            <span className="text-xs font-bold text-slate-400 uppercase">Original</span>
-                            <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-inner group border border-slate-200">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Original */}
+                        <div className="space-y-4">
+                            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-2">Original</span>
+                            <div className="relative aspect-square rounded-[20px] p-2 overflow-hidden
+                              bg-[#EFEEEE] dark:bg-[#292D32]
+                              shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff]
+                              dark:shadow-[inset_6px_6px_12px_#1e2226,inset_-6px_-6px_12px_#34383e]
+                            ">
                                 <img 
                                     src={preview} 
                                     alt="Original" 
-                                    className="w-full h-full object-contain"
+                                    className="w-full h-full object-contain rounded-[15px]"
                                 />
-                                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-slate-600">
+                                <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500
+                                  bg-[#EFEEEE] dark:bg-[#292D32] opacity-90
+                                  shadow-[2px_2px_4px_#d1d9e6,-2px_-2px_4px_#ffffff]
+                                  dark:shadow-[2px_2px_4px_#1e2226,-2px_-2px_4px_#34383e]
+                                ">
                                     {(file.size / 1024).toFixed(1)} KB
                                 </div>
                             </div>
                         </div>
 
-                        <div className="space-y-3">
-                            <span className="text-xs font-bold text-blue-400 uppercase">Result</span>
-                            <div className="relative aspect-square rounded-2xl overflow-hidden bg-blue-50/50 shadow-inner group border-2 border-dashed border-blue-200 flex items-center justify-center">
+                        {/* Result */}
+                        <div className="space-y-4">
+                            <span className="text-xs font-bold text-blue-400 uppercase tracking-widest pl-2">Optimized</span>
+                            <div className="relative aspect-square rounded-[20px] p-2 overflow-hidden flex items-center justify-center
+                              bg-[#EFEEEE] dark:bg-[#292D32]
+                              shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff]
+                              dark:shadow-[inset_6px_6px_12px_#1e2226,inset_-6px_-6px_12px_#34383e]
+                            ">
                                 {result ? (
                                     <img 
                                         src={result.url} 
                                         alt="Compressed" 
-                                        className="w-full h-full object-contain"
+                                        className="w-full h-full object-contain rounded-[15px]"
                                     />
                                 ) : isCompressing ? (
                                     <div className="flex flex-col items-center">
-                                        <RefreshCw className="w-10 h-10 text-blue-600 animate-spin mb-3" />
-                                        <p className="text-sm font-medium text-blue-600">Optimizing...</p>
+                                        <RefreshCw className="w-10 h-10 text-blue-500 animate-spin mb-4" />
+                                        <p className="text-sm font-bold text-blue-500">Working magic...</p>
                                     </div>
                                 ) : (
-                                    <div className="text-center p-6">
-                                        <ArrowRight className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-                                        <p className="text-sm text-slate-400">Click compress to see results</p>
+                                    <div className="text-center p-6 opacity-50">
+                                        <p className="text-sm text-slate-400">Waiting for command...</p>
                                     </div>
                                 )}
+                                
                                 {result && (
-                                    <div className="absolute top-3 right-3 bg-green-500 px-2 py-1 rounded text-[10px] font-bold text-white shadow-lg">
-                                        -{result.savings}% SAVED
+                                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold text-green-500
+                                      bg-[#EFEEEE] dark:bg-[#292D32] opacity-90
+                                      shadow-[2px_2px_4px_#d1d9e6,-2px_-2px_4px_#ffffff]
+                                      dark:shadow-[2px_2px_4px_#1e2226,-2px_-2px_4px_#34383e]
+                                    ">
+                                        -{result.savings}%
                                     </div>
                                 )}
                             </div>
@@ -240,20 +264,32 @@ const ImageCompressor = () => {
                         <motion.div 
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="p-6 bg-green-50 rounded-2xl border border-green-100 flex flex-col md:flex-row items-center justify-between gap-4"
+                            className="p-6 rounded-[20px] flex flex-col md:flex-row items-center justify-between gap-4
+                              bg-[#EFEEEE] dark:bg-[#292D32]
+                              shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]
+                              dark:shadow-[inset_4px_4px_8px_#1e2226,inset_-4px_-4px_8px_#34383e]
+                            "
                         >
                             <div>
-                                <h4 className="text-green-800 font-bold mb-1 flex items-center gap-2">
-                                    <CheckCircle className="w-4 h-4" /> Successfully Optimized
+                                <h4 className="text-green-600 font-bold mb-1 flex items-center gap-2">
+                                    <CheckCircle className="w-4 h-4" /> Optimization Complete
                                 </h4>
-                                <p className="text-sm text-green-600">New size: {(result.size / 1024).toFixed(1)} KB</p>
+                                <p className="text-sm text-slate-500 dark:text-slate-400">New size: {(result.size / 1024).toFixed(1)} KB</p>
                             </div>
                             <button 
                                 onClick={downloadImage}
-                                className="w-full md:w-auto px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-bold shadow-lg shadow-green-200 flex items-center justify-center gap-2 transition-all"
+                                className="px-8 py-3 rounded-xl font-bold text-blue-500 transition-all active:scale-95
+                                  bg-[#EFEEEE] dark:bg-[#292D32]
+                                  shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+                                  dark:shadow-[6px_6px_12px_#1e2226,-6px_-6px_12px_#34383e]
+                                  hover:text-blue-600
+                                  active:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]
+                                  dark:active:shadow-[inset_4px_4px_8px_#1e2226,inset_-4px_-4px_8px_#34383e]
+                                  flex items-center gap-2
+                                "
                             >
                                 <Download className="w-5 h-5" />
-                                Download Now
+                                Save Image
                             </button>
                         </motion.div>
                     )}
@@ -263,50 +299,80 @@ const ImageCompressor = () => {
             </div>
           </motion.div>
 
-          {/* Sidebar Controls & Info */}
-          <div className="space-y-6">
+          {/* Sidebar */}
+          <div className="space-y-8">
             {file && !result && (
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100"
+                className="rounded-[30px] p-6
+                  bg-[#EFEEEE] dark:bg-[#292D32]
+                  shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff]
+                  dark:shadow-[8px_8px_16px_#1e2226,-8px_-8px_16px_#34383e]
+                "
               >
-                <div className="flex items-center gap-2 mb-6 text-slate-800">
-                  <Settings className="w-5 h-5 text-blue-600" />
-                  <h3 className="font-bold uppercase tracking-wider text-sm">Settings</h3>
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="p-2 rounded-lg bg-[#EFEEEE] dark:bg-[#292D32] shadow-[3px_3px_6px_#d1d9e6,-3px_-3px_6px_#ffffff] dark:shadow-[3px_3px_6px_#1e2226,-3px_-3px_6px_#34383e]">
+                    <Settings className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <h3 className="font-bold uppercase tracking-wider text-sm text-slate-600 dark:text-slate-300">Settings</h3>
                 </div>
                 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div>
                     <div className="flex justify-between mb-4">
-                      <label className="text-sm font-medium text-slate-700">Compression Quality</label>
-                      <span className="text-sm font-bold text-blue-600">{quality}%</span>
+                      <label className="text-sm font-bold text-slate-500 dark:text-slate-400">Quality</label>
+                      <span className="text-sm font-black text-blue-500">{quality}%</span>
                     </div>
-                    <input
-                      type="range"
-                      min="1"
-                      max="100"
-                      value={quality}
-                      onChange={(e) => setQuality(e.target.value)}
-                      className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                    />
-                    <div className="flex justify-between mt-2">
-                        <span className="text-[10px] text-slate-400">Smaller Size</span>
-                        <span className="text-[10px] text-slate-400">Better Quality</span>
+                    {/* Neumorphic Slider */}
+                    <div className="relative w-full h-4 rounded-full
+                      bg-[#EFEEEE] dark:bg-[#292D32]
+                      shadow-[inset_2px_2px_4px_#d1d9e6,inset_-2px_-2px_4px_#ffffff]
+                      dark:shadow-[inset_2px_2px_4px_#1e2226,inset_-2px_-2px_4px_#34383e]
+                    ">
+                        <div 
+                            className="absolute top-0 left-0 h-full bg-blue-500 rounded-full opacity-20"
+                            style={{ width: `${quality}%` }}
+                        />
+                        <input
+                            type="range"
+                            min="1"
+                            max="100"
+                            value={quality}
+                            onChange={(e) => setQuality(e.target.value)}
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        />
+                        {/* Custom Thumb handle visual */}
+                        <div 
+                            className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#EFEEEE] dark:bg-[#292D32] shadow-[3px_3px_6px_#d1d9e6,-3px_-3px_6px_#ffffff] dark:shadow-[3px_3px_6px_#1e2226,-3px_-3px_6px_#34383e] border border-slate-100 dark:border-slate-700 pointer-events-none"
+                            style={{ left: `calc(${quality}% - 12px)` }}
+                        >
+                            <div className="w-2 h-2 bg-blue-500 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        </div>
                     </div>
                   </div>
 
                   <button 
                     onClick={handleCompress}
                     disabled={isCompressing}
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 transition-all duration-300 flex items-center justify-center gap-2 group"
+                    className="w-full py-4 rounded-xl font-black text-blue-500 transition-all
+                      bg-[#EFEEEE] dark:bg-[#292D32]
+                      shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff]
+                      dark:shadow-[6px_6px_12px_#1e2226,-6px_-6px_12px_#34383e]
+                      hover:shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff]
+                      dark:hover:shadow-[8px_8px_16px_#1e2226,-8px_-8px_16px_#34383e]
+                      active:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]
+                      dark:active:shadow-[inset_4px_4px_8px_#1e2226,inset_-4px_-4px_8px_#34383e]
+                      active:scale-[0.98]
+                      flex items-center justify-center gap-3
+                    "
                   >
                     {isCompressing ? (
                       <RefreshCw className="w-5 h-5 animate-spin" />
                     ) : (
                       <>
-                        <span>Compress Now</span>
-                        <Zap className="w-4 h-4 group-hover:scale-125 transition-transform" />
+                        <span>COMPRESS</span>
+                        <Zap className="w-4 h-4" />
                       </>
                     )}
                   </button>
@@ -314,50 +380,21 @@ const ImageCompressor = () => {
               </motion.div>
             )}
 
-            {/* Feature Cards */}
-            <div className="bg-slate-900 rounded-3xl p-6 text-white shadow-xl">
-                <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-400" /> Why use WebTools?
+            {/* Info Card */}
+            <div className="rounded-[30px] p-6
+              bg-[#EFEEEE] dark:bg-[#292D32]
+              shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]
+              dark:shadow-[inset_4px_4px_8px_#1e2226,inset_-4px_-4px_8px_#34383e]
+            ">
+                <h3 className="text-sm font-bold mb-4 flex items-center gap-2 text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    <Info className="w-4 h-4" /> Privacy Note
                 </h3>
-                <div className="space-y-6">
-                    {features.map((f, i) => (
-                        <div key={i} className="flex gap-4">
-                            <div className="flex-shrink-0 mt-1">{f.icon}</div>
-                            <div>
-                                <h4 className="text-sm font-bold text-slate-100">{f.title}</h4>
-                                <p className="text-xs text-slate-400 mt-1 leading-relaxed">{f.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <div className="bg-blue-600 rounded-3xl p-6 text-white overflow-hidden relative group">
-                <div className="relative z-10">
-                    <h3 className="font-bold text-xl mb-2 italic">Coming Soon</h3>
-                    <p className="text-blue-100 text-sm">Image Resize & Bulk processing will be available soon!</p>
-                </div>
-                <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-blue-500 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Your photos are processed entirely within your browser. 
+                    No data is ever sent to our servers. It's 100% private and secure.
+                </p>
             </div>
           </div>
-        </div>
-
-        {/* How it works section */}
-        <div className="mt-20 pt-20 border-t border-slate-200">
-            <h2 className="text-3xl font-black text-center text-slate-900 mb-12">How it works?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {[
-                    { step: "01", title: "Upload", desc: "Drag and drop your image or click to select from your device." },
-                    { step: "02", title: "Optimize", desc: "Adjust the quality slider to find your perfect balance." },
-                    { step: "03", title: "Download", desc: "Get your optimized image instantly. No waiting, no watermarks." }
-                ].map((s, i) => (
-                    <div key={i} className="text-center group">
-                        <span className="text-6xl font-black text-slate-100 group-hover:text-blue-50 transition-colors duration-300 block mb-4">{s.step}</span>
-                        <h4 className="text-xl font-bold text-slate-800 mb-2">{s.title}</h4>
-                        <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
-                    </div>
-                ))}
-            </div>
         </div>
       </div>
     </div>

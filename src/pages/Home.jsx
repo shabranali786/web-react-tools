@@ -17,106 +17,111 @@ const Home = () => {
     {
       id: 1,
       name: "Image Compressor",
-      description: "Reduce file size up to 90% without losing quality. Optimized for web performance.",
+      description: "Reduce file size up to 90% without losing quality.",
       path: "/image-compressor",
-      icon: <ImageIcon className="w-6 h-6 text-blue-600" />,
-      color: "blue",
+      icon: <ImageIcon className="w-6 h-6" />,
       tag: "Popular"
     },
     {
       id: 2,
       name: "Image Resizer",
-      description: "Quickly change image dimensions for social media, web, or print.",
+      description: "Quickly change image dimensions.",
       path: "#",
-      icon: <Maximize className="w-6 h-6 text-purple-600" />,
-      color: "purple",
-      tag: "Coming Soon"
+      icon: <Maximize className="w-6 h-6" />,
+      tag: "Soon"
     },
     {
       id: 3,
       name: "Format Converter",
-      description: "Convert between PNG, JPG, WEBP and SVG formats instantly.",
+      description: "Convert between PNG, JPG, WEBP formats.",
       path: "#",
-      icon: <Files className="w-6 h-6 text-orange-600" />,
-      color: "orange",
-      tag: "Coming Soon"
+      icon: <Files className="w-6 h-6" />,
+      tag: "Soon"
     }
   ];
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="font-sans selection:bg-blue-100 selection:text-blue-900">
       {/* Hero Section */}
-      <div className="relative overflow-hidden pt-20 pb-32">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/40 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-purple-100/40 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative pt-10 pb-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-white border border-slate-200 px-4 py-2 rounded-full mb-8 shadow-sm">
-                <Sparkles className="w-4 h-4 text-yellow-500" />
-                <span className="text-sm font-semibold text-slate-600 tracking-wide">THE ULTIMATE WEB UTILITIES</span>
+            <div className="inline-flex items-center space-x-2 px-6 py-2 rounded-full mb-8 
+              bg-[#EFEEEE] dark:bg-[#292D32] 
+              shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff]
+              dark:shadow-[inset_4px_4px_8px_#1e2226,inset_-4px_-4px_8px_#34383e]
+            ">
+                <Sparkles className="w-4 h-4 text-blue-500" />
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 tracking-widest uppercase">Neumorphic Tools</span>
             </div>
-            <h1 className="text-6xl md:text-7xl font-black text-slate-900 mb-8 tracking-tight leading-tight">
-              Professional Tools <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Simplified.</span>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-slate-700 dark:text-slate-200 mb-6 tracking-tight">
+              Tools that feel <br />
+              <span className="text-blue-500">Real.</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-xl text-slate-600 mb-12 leading-relaxed">
-              Fast, secure, and free browser-based tools for developers and creators. No registration required.
+            
+            <p className="max-w-xl mx-auto text-lg text-slate-500 dark:text-slate-400 mb-12 font-medium">
+              A collection of web utilities designed with Soft UI principles. 
+              Simple, beautiful, and tactile.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#tools" className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold shadow-xl hover:bg-slate-800 transition-all flex items-center gap-2 group">
+
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <Link to="#tools" 
+                  className="px-10 py-4 rounded-2xl font-bold text-blue-500 dark:text-blue-400 transition-all duration-300
+                  bg-[#EFEEEE] dark:bg-[#292D32]
+                  shadow-[8px_8px_16px_#d1d9e6,-8px_-8px_16px_#ffffff]
+                  dark:shadow-[8px_8px_16px_#1e2226,-8px_-8px_16px_#34383e]
+                  hover:shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff]
+                  dark:hover:shadow-[inset_8px_8px_16px_#1e2226,inset_-8px_-8px_16px_#34383e]
+                  flex items-center justify-center gap-2 group
+                  "
+                >
                     Explore Tools
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <button className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold shadow-sm hover:bg-slate-50 transition-all">
-                    How it works
-                </button>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Stats/Features */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-12 bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white">
-            <div className="flex flex-col items-center text-center p-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                    <Zap className="w-6 h-6 text-blue-600" />
-                </div>
-                <h4 className="font-bold text-slate-900 mb-2">Ultra Fast</h4>
-                <p className="text-sm text-slate-500">Processing happens directly in your browser.</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-4">
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
-                    <ShieldCheck className="w-6 h-6 text-green-600" />
-                </div>
-                <h4 className="font-bold text-slate-900 mb-2">100% Private</h4>
-                <p className="text-sm text-slate-500">Files never leave your computer. Privacy first.</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-4">
-                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
-                    <Smartphone className="w-6 h-6 text-orange-600" />
-                </div>
-                <h4 className="font-bold text-slate-900 mb-2">No Install</h4>
-                <p className="text-sm text-slate-500">Works on any device with a modern browser.</p>
-            </div>
+      {/* Stats - Pressed In Look */}
+      <div className="max-w-6xl mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 rounded-[30px]
+          bg-[#EFEEEE] dark:bg-[#292D32]
+          shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff]
+          dark:shadow-[inset_8px_8px_16px_#1e2226,inset_-8px_-8px_16px_#34383e]
+        ">
+            {[
+              { icon: <Zap />, title: "Fast", desc: "Client-side only" },
+              { icon: <ShieldCheck />, title: "Secure", desc: "No server uploads" },
+              { icon: <Smartphone />, title: "Responsive", desc: "Mobile ready" }
+            ].map((stat, i) => (
+              <div key={i} className="flex flex-col items-center text-center p-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 text-blue-500
+                    bg-[#EFEEEE] dark:bg-[#292D32]
+                    shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff]
+                    dark:shadow-[5px_5px_10px_#1e2226,-5px_-5px_10px_#34383e]
+                  ">
+                      {stat.icon}
+                  </div>
+                  <h4 className="font-bold text-slate-700 dark:text-slate-200 mb-1">{stat.title}</h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{stat.desc}</p>
+              </div>
+            ))}
         </div>
       </div>
 
       {/* Tools Grid */}
-      <div id="tools" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-        <div className="mb-16">
-            <h2 className="text-4xl font-black text-slate-900 mb-4">Available Tools</h2>
-            <p className="text-slate-500">Select a tool to start optimizing your workflow.</p>
+      <div id="tools" className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="mb-12 text-center">
+            <h2 className="text-3xl font-black text-slate-700 dark:text-slate-200">Our Suite</h2>
         </div>
 
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool, index) => (
             <motion.div
               key={tool.id}
@@ -126,59 +131,47 @@ const Home = () => {
             >
                 <Link 
                 to={tool.path}
-                className="group relative flex flex-col h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col h-full rounded-[30px] p-8 transition-all duration-300
+                  bg-[#EFEEEE] dark:bg-[#292D32]
+                  shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff]
+                  dark:shadow-[10px_10px_20px_#1e2226,-10px_-10px_20px_#34383e]
+                  hover:translate-y-[-5px]
+                "
                 >
-                    {/* Tool Tag */}
                     <div className="absolute top-6 right-6">
-                        <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${
-                            tool.tag === "Popular" ? "bg-blue-100 text-blue-600" : "bg-slate-100 text-slate-500"
-                        }`}>
+                        <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest 
+                          ${tool.tag === 'Popular' ? 'text-blue-500' : 'text-slate-400'}
+                          bg-[#EFEEEE] dark:bg-[#292D32]
+                          shadow-[inset_2px_2px_4px_#d1d9e6,inset_-2px_-2px_4px_#ffffff]
+                          dark:shadow-[inset_2px_2px_4px_#1e2226,inset_-2px_-2px_4px_#34383e]
+                        `}>
                             {tool.tag}
                         </span>
                     </div>
 
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ${
-                        tool.color === 'blue' ? 'bg-blue-50' : tool.color === 'purple' ? 'bg-purple-50' : 'bg-orange-50'
-                    }`}>
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-blue-500
+                      bg-[#EFEEEE] dark:bg-[#292D32]
+                      shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff]
+                      dark:shadow-[inset_5px_5px_10px_#1e2226,inset_-5px_-5px_10px_#34383e]
+                      group-hover:scale-110 transition-transform duration-300
+                    ">
                         {tool.icon}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-3 group-hover:text-blue-500 transition-colors">
                         {tool.name}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed mb-8 flex-grow">
+                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-6 text-sm">
                         {tool.description}
                     </p>
                     
-                    <div className="flex items-center text-sm font-bold text-blue-600 group-hover:translate-x-2 transition-transform">
-                        Get Started <ArrowRight className="w-4 h-4 ml-2" />
+                    <div className="mt-auto flex items-center text-sm font-bold text-blue-500 group-hover:translate-x-2 transition-transform">
+                        Open Tool <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
-
-                    {/* Hover Decoration */}
-                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-slate-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-          <div className="bg-blue-600 rounded-[3rem] p-16 text-center text-white relative overflow-hidden">
-              <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-black mb-6">Ready to optimize your workflow?</h2>
-                <p className="text-blue-100 text-lg mb-12 max-w-xl mx-auto font-medium">
-                    Join thousands of developers using WebTools every day. No strings attached.
-                </p>
-                <Link to="/image-compressor" className="px-10 py-5 bg-white text-blue-600 rounded-2xl font-black shadow-xl hover:scale-105 transition-transform inline-block">
-                    Start Compressing Now
-                </Link>
-              </div>
-              <div className="absolute top-0 left-0 w-full h-full opacity-10">
-                  <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
-                  <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3" />
-              </div>
-          </div>
       </div>
     </div>
   );
