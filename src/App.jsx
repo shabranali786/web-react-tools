@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Master } from "./component/Allcomponent";
-import { Home } from "./pages/Allpages";
+import { Home, ImageCompressor } from "./pages/Allpages";
 
 function App() {
   const router = createBrowserRouter(
@@ -15,6 +15,7 @@ function App() {
       <>
         <Route path="/" element={<Master />}>
           <Route index element={<Home />} />
+          <Route path="image-compressor" element={<ImageCompressor />} />
         </Route>
       </>
     )
