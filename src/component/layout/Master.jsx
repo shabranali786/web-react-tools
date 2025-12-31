@@ -5,11 +5,13 @@ import Footer from "./Footer";
 
 const Master = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <main className="flex-grow pt-16">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
